@@ -1,0 +1,21 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b intelligent_ca is a package stack for collision avoidance solution based on \b object_pipeline.
+
+Here is the basic data follow corresponding to intelligent_ca:
+![iCA_arch](intelligent_ca.png)
+
+\section Inputs
+   + topics published by *object pipeline*.
+       * topics for object detection
+       * topics for object tracking
+       * topics for object localization
+
+\section Output
+   + Topics for object info merging
+   + collision avoidance policy
+   + Object kinectic estimation
+
+*/
