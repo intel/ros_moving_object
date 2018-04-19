@@ -29,3 +29,6 @@ robot_base: waterbot
 
 #social object source
 social_object_source: /moving_object/social_object
+
+#default luminance fro LED belt.
+luminance: 128

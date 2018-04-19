@@ -85,10 +85,12 @@ The supported policy actions vary according to the specified robot chassis:
 
    * Launching commands
 
-  Taking turtlebot2 as example, and make sure moving_object (steps in section above) is already launched:
+  Before launching CA Policy, make sure moving_object (steps in section above) is already launched.
+  Use argument "chassis:=" to set the chassis working on. "chassis:=turtlebot" for turtlebot2, and "chassis:=waterbot" for Water C1.
+  See below launching example:
   ```bash
   roslaunch turtlebot_bringup minimal.launch
-  roslaunch ca_policy ca_policy.launch
+  roslaunch ca_policy ca_policy.launch chassis:=turtlebot
   roslaunch turtlebot_navigation gmapping_demo.launch
   roslaunch turtlebot_rviz_launchers view_navigation.launch (Optional)
   ```
@@ -98,48 +100,11 @@ The supported policy actions vary according to the specified robot chassis:
   Currently, *ca_policy* package supports turtlebot2 and [waterbot](http://www.yunji.com) robot chassises. Some parameters should be updated for robot chassis changing:
   * robot chassis: the name of robot name (currently  turtlebot | waterbot)
   * CaPolicies/config: the config file of each CA Policy.
-#### 6.4.1 Enable Turtlebot2 Chassis
-  Update param/ca_policy_common.yaml as:
-  ```bash
-  #CA Policies supported
-  # Note that normal Policy must be set.
-  CaPolicies:
-    - {name: "normal",  config: "turtlebot/normal.yaml"}
-    - {name: "social",  config: "turtlebot/social.yaml"}
+#### 6.4.1 How to add new chassis support
+  1. Implement specific policy actions to be used for the new chassis.
+  2. Create sub-folder _[chassis-name]_ under folder param/, which involves the CA Policy configuration files (i.e. normal.yaml and social.yaml, individually for _normal_ policy and _social_ policy),  as well the specific configurations if any.
+  3. Create file param/ca_policy_common.[chassis-name].yaml. In this file, the configuration paths of CaPolicies should be corrected set.
 
-  #maximum distance from robot to a person when social policy is enabled.
-  max_detection_distance: 2.5
-
-  #minimal interval in which social policy should be kept.
-  min_interval: 5.0
-
-  #The name of robot chassis, one of "waterbot" or "turtlebot"
-  robot_base: turtlebot
-
-  #social object source
-  social_object_source: /moving_object/social_object
-  ```
-#### 6.4.2 Enable Water C1 Chassis 
-  Update param/ca_policy_common.yaml as:
-  ```bash
-  #CA Policies supported
-  # Note that normal Policy must be set.
-  CaPolicies:
-    - {name: "normal",  config: "waterbot/normal.yaml"}
-    - {name: "social",  config: "waterbot/social.yaml"}
-
-  #maximum distance from robot to a person when social policy is enabled.
-  max_detection_distance: 2.5
-
-  #minimal interval in which social policy should be kept.
-  min_interval: 5.0
-
-  #The name of robot chassis, one of "waterbot" or "turtlebot"
-  robot_base: waterbot
-
-  #social object source
-  social_object_source: /moving_object/social_object
-  ```
 ## 7. Known Issues
 
 * Moving Object directly uses the frame_id passed through from Object Analytics package.
