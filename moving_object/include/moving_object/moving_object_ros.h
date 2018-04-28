@@ -53,7 +53,7 @@ private:
   ros::Subscriber tracking_sub_;     /**< the subscriber of tracking messages*/
   ros::Subscriber localization_sub_; /**< the subscriber of localization messages*/
 
-  std::shared_ptr<MovingObjects> frames_; /**< the frames storing all objects' info
+  std::shared_ptr<MovingObjects> frames_; /**< the frames storing all objects' info */
 
  /**< Object Messages, which are initialized from parameter re-configure.*/
   std::string msg_object_detection_;

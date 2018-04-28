@@ -15,9 +15,10 @@ limitations under the License.
 -->
 <launch>
   <arg name="policy_base_dir" default="$(find ca_policy)/param/" />
+  <arg name="chassis" default="turtlebot" />
   <node pkg="ca_policy" name="ca_policy" type="ca_policy" output="screen">
 	<remap from="social_object" to="/moving_object/social_object" />
-    <rosparam file="$(find ca_policy)/param/ca_policy_common.yaml" command="load" />
+    <rosparam file="$(arg policy_base_dir)/param/ca_policy_common.$(arg chassis).yaml" command="load" />
     <param name="policy_base_dir" value="$(arg policy_base_dir)" />
   </node>
 </launch>
