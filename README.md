@@ -67,18 +67,19 @@ The supported policy actions vary according to the specified robot chassis:
 ### 6.1 Output Topic
  - **/ca\_policy/ca\_policy**  notifies the current collision avoidance policy.
 ### 6.2 Build & Runtime Dependencies
-  ROS packages from [ros-kinetic-desktop-full](http://wiki.ros.org/kinetic/Installation/Ubuntu)
-  * roscpp
-  * std_msgs
-  * sensor_msgs
-  * geometry_msgs
-  * dynamic_reconfigure
-  * kobuki_msgs
+  - ROS packages from [ros-kinetic-desktop-full](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+    * roscpp
+    * std_msgs
+    * sensor_msgs
+    * geometry_msgs
+    * dynamic_reconfigure
+    * kobuki_msgs
 
-  ROS packages from [Intel repo](https://github.com/intel)
-  * [moving_object_msgs](https://github.com/intel/ros_moving_object)
+  - ROS packages from [Intel repo](https://github.com/intel)
+    * [moving_object_msgs](https://github.com/intel/ros_moving_object)
 
-  Other Packages:
+  - Other Packages:
+
   If you are running the packages on turtlebot 2 chassis, some kobuki related packages are dependent. For example, package *kobuki_msgs* is build-depend, and some of other kobuki packages are runtime-dependent. so safely, it is simple to just install kobuki meta package:
   ```bash
   sudo apt-get install ros-kinetic-kobuki
