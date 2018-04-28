@@ -9,7 +9,7 @@ motion information. Such information can extend robot's ability of motion planin
 ## 2. Output Topics
 
 ros_moving_object package publishes some messages to indicate different status/data.
- - **/moving\_object/moving\_objects** merges info from the 3 input messages into one message.
+ - **/moving\_object/moving\_objects** merges info from the 3 input messages into one message, as well calculates velocity info of moving objects.
 
 ## 3. Build and Runtime dependencies
 
@@ -77,6 +77,16 @@ The supported policy actions vary according to the specified robot chassis:
 
   ROS packages from [Intel repo](https://github.com/intel)
   * [moving_object_msgs](https://github.com/intel/ros_moving_object)
+
+  Other Packages:
+  If you are running the packages on turtlebot 2 chassis, some kobuki related packages are dependent. For example, package *kobuki_msgs* is build-depend, and some of other kobuki packages are runtime-dependent. so safely, it is simple to just install kobuki meta package:
+  ```bash
+  sudo apt-get install ros-kinetic-kobuki
+  ```
+  If only for package build, install *kobuki_msgs* is enough:
+  ```bash
+  sudo apt-get install ros-kinetic-kobuki-msgs
+  ```
 
 ### 6.3 Launch CA Policy Sample Package
    * Prerequisite
