@@ -58,6 +58,15 @@ ros_moving_object package publishes some messages to indicate different status/d
   roslaunch object_analytics_launch analytics_movidius_ncs.launch input_points:=/camera/points
   roslaunch moving_object moving_object.launch
   ```
+  **NOTE**
+  If _velocity\_enabled_ is set to _true_ and any chassis rather than turtulebot2 is used, you probabily need to caliberate camera TF transform publisher before launching moving_object node.
+  Run below commands for the example launching commands shown above:
+  ```bash
+  roslaunch realsense_ros_camera rs_camera.launch enable_pointcloud:=true enable_sync:=true
+  roslaunch object_analytics_launch analytics_movidius_ncs.launch input_points:=/camera/points
+  roslaunch moving_object camera_tf_calibration.launch
+  roslaunch moving_object moving_object.launch
+  ```
 
 ## 6. Usage Sample - CA Policy
 CA Policy is a sample ros package using ros_moving_object package to arbitrate suitable policies according to the detected obstacle types. CA Policy outputs policy name as topic *ca_policy* and acts the behaviors set to the given policy.
